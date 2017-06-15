@@ -1,0 +1,27 @@
+apply plugin: 'groovy'
+apply plugin: 'maven'
+
+dependencies {
+    // gradle sdk
+    compile gradleApi()
+    // groovy sdk
+    compile localGroovy()
+    // 可以引用其它库
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+}
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            //提交到远程服务器：
+            // repository(url: "http://www.xxx.com/repos") {
+            //    authentication(userName: "admin", password: "admin")
+            // }
+            //本地的Maven地址
+            repository(url: 'file:///Users/Allen/repos/')
+        }
+    }
+}
+
+group='me.denghui.gradle'
+version='1.0.0'
